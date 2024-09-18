@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .login-container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h2 {
+            color: purple;
+            margin-bottom: 20px;
+        }
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4b0082;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #5b00a3;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Crie sua Conta</h2>
+        <form id="signup-form">
+            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Senha" required>
+            <input type="submit" value="Cadastrar">
+            <div id="error-message" class="error-message"></div>
+        </form>
+        <a href="login.html">Já tem uma conta? Faça login</a>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+
+        const firebaseConfig = {
+apiKey: "AIzaSyDlzRH1lid0r3steZMEV-LlLzyb4QEbz0c",
+authDomain: "growpath-6c856.firebaseapp.com",
+projectId: "growpath-6c856",
+storageBucket: "growpath-6c856.appspot.com",
+messagingSenderId: "380923587402",
+appId: "1:380923587402:web:0c110c8b5de2032a7aafb3",
+measurementId: "G-7MYGZJS9F3"
+};
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previne o envio padrão do formulário
+
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const errorMessageDiv = document.getElementById('error-message');
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    console.log("Usuário registrado:", userCredential.user);
+                    window.location.href = "cursos.html"; // Redirecionar para a tela inicial ou qualquer outra página desejada
+                })
+                .catch((error) => {
+                    console.error("Erro ao registrar:", error.message);
+                    errorMessageDiv.textContent = "Erro ao criar a conta. Tente novamente.";
+                });
+        });
+    </script>
+
+</body>
+</html>

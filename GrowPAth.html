@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowPath</title>
+
+    
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif, sans-serif;
+            margin: 250;
+            padding: 190;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 50px;
+            position: relative;
+            z-index: 10;
+        }
+        .navbar .logo {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .navbar .menu-center {
+            display: flex;
+            gap: 20px;
+        }
+        .navbar .menu-center a,
+        .navbar .menu-right a {
+            text-decoration: none;
+            color: black;
+            padding: 10px;
+            transition: color 0.5s ease;
+        }
+        .navbar .menu-center a:hover,
+        .navbar .menu-right a:hover {
+            color: blue;
+        }
+        .navbar .menu-right {
+            display: flex;
+            gap: 20px;
+        }
+        .content {
+            padding: 90px;
+            text-align: center;
+            
+        }
+        .entrar {
+            text-align: center;
+        }
+        button{
+            border-radius: 25px;
+            color: white;
+            font-size: 35px;
+            background-color: gray;
+            border: none;
+            text-align: center;
+            height: 50px;
+            width: 230px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">GrowPath:</div>
+        <div class="menu-center">
+            <a href="#">Início</a>
+            <a href="#">Sobre</a>
+            <a href="cursos.html">Equipe</a>
+        </div>
+        <div class="menu-right">
+            <a href="#">Contato</a>
+        </div>
+    </div>
+    <div class="content">
+        <font size="26">O site para gerenciar seus estudos e oportunidade de emprego</font>
+        <p>Já fez sua conta?<a href="login.html">Clique Aqui</a></p>
+    </div>
+   
+    <div class="entrar">
+        <a href="signup.html"><button>Criar Conta</button></a>
+    </div>
+
+</body>
+</html>
